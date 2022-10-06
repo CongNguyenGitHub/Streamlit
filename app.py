@@ -12,11 +12,11 @@ def load_lottieurl(url: str):
     if r.status_code != 200:
         return None
     return r.json()
-lottie_hello = lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_4gqhiayj.json")
+lottie_hello = lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/private_files/lf30_m075yjya.json")
 st_lottie(lottie_hello,key="Hello")
 tf.compat.v1.disable_eager_execution()
 text_download = "https://uithcm-my.sharepoint.com/personal/21521211_ms_uit_edu_vn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2F21521211%5Fms%5Fuit%5Fedu%5Fvn%2FDocuments%2FCS2021%2FHK3%2D2022%2FCS523%2FManual%2Epdf&parent=%2Fpersonal%2F21521211%5Fms%5Fuit%5Fedu%5Fvn%2FDocuments%2FCS2021%2FHK3%2D2022%2FCS523&ga=1"
-st.download_button("Seeing this program manual here",text_download)
+st.download_button("Download this program manual here",text_download)
 data_file=st.file_uploader("Input your file here ",type="xlsx")
 flag=False
 if data_file is not None :
