@@ -17,7 +17,8 @@ st_lottie(lottie_hello,key="Hello")
 tf.compat.v1.disable_eager_execution()
 text_download = "Manual.pdf"
 tf.compat.v1.disable_eager_execution()
-st.download_button("Download this program manual here",text_download)
+with open('Manual.pdf') as f:
+   st.download_button('Download this program manual here', f)
 data_file=st.file_uploader("Input your file here ",type="xlsx")
 flag=False
 if data_file is not None :
