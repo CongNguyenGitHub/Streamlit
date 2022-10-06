@@ -15,10 +15,13 @@ def load_lottieurl(url: str):
 lottie_hello = lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/private_files/lf30_m075yjya.json")
 st_lottie(lottie_hello,key="Hello")
 tf.compat.v1.disable_eager_execution()
-text_download = "Manual.pdf"
 tf.compat.v1.disable_eager_execution()
-with open('Manual.pdf') as f:
-   st.download_button('Download this program manual here', f)
+with open("Manual.pdf", "rb") as pdf_file:
+    PDFbyte = pdf_file.read()
+st.download_button(label="Download this program manual here",
+                    data=PDFbyte,
+                    file_name="Manual.pdf",
+                    mime='application/octet-stream')
 data_file=st.file_uploader("Input your file here ",type="xlsx")
 flag=False
 if data_file is not None :
