@@ -48,10 +48,8 @@ if data_file is not None :
                 index+=1
         if agree==True:
             Y_train[:,0]=df[label]
-            epoch=10
-            if row<10: epoch=row
-            X=tf.compat.v1.placeholder(tf.float32 ,[epoch,col] )
-            Y=tf.compat.v1.placeholder(tf.float32,[epoch,1])
+            X=tf.compat.v1.placeholder(tf.float32 ,[row,col] )
+            Y=tf.compat.v1.placeholder(tf.float32,[row,1])
             W=tf.Variable(tf.ones([col,1]))
             b=tf.Variable(np.random.randn(),dtype=tf.float32)
             pred=tf.add(tf.matmul(X,W),b)
@@ -60,10 +58,8 @@ if data_file is not None :
             init=tf.compat.v1.global_variables_initializer ()
             sess=tf.compat.v1.Session()
             sess.run(init)
-            for i in range(0,row,epoch):
-                if row-i<epoch:
-                    epoch=row-i
-                sess.run(optimizer,feed_dict={X:X_train[i:i+epoch,:],Y:Y_train[i:i+epoch,:]})
+            for epoch in range(100*row):
+                sess.run(optimizer,feed_dict={X:X_train,Y:Y_train})
             my_array = np.array([])
             for x in df :
                 if x !=label :
@@ -74,5 +70,4 @@ if data_file is not None :
                 my_array=my_array.reshape(1,-1)
                 x=np.matmul(my_array,sess.run(W))+sess.run(b)
                 st.write("Revenue forecast results is "+str(x[0]))
-                
 
