@@ -58,7 +58,7 @@ if data_file is not None :
             init=tf.compat.v1.global_variables_initializer ()
             sess=tf.compat.v1.Session()
             sess.run(init)
-            for epoch in range(100*row):
+            for epoch in range(10000):
                 sess.run(optimizer,feed_dict={X:X_train,Y:Y_train})
             my_array = np.array([])
             for x in df :
